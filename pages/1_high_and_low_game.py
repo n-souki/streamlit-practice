@@ -8,15 +8,23 @@ from models.highlow import judge
 st.title("_High & Low Game_")
 st.write("**High & Low** ゲームへようこそ！")
 
-# JSONファイルを読み込む
-json_path = Path(__file__).parent.parent / "sample_data" / "highlow.json"
+from models.highlow import draw_cards
 
-with open(json_path, "r", encoding="utf-8") as f:
-    data = json.load(f)
+if "base_card" not in st.session_state:
+    st.session_state.base_card, st.session_state.result_card = draw_cards()
 
-# カードの情報
-base_card = data["base_card"] 
-result_card = data["result_card"]
+base_card = st.session_state.base_card
+result_card = st.session_state.result_card
+
+# # JSONファイルを読み込む
+# json_path = Path(__file__).parent.parent / "sample_data" / "highlow.json"
+
+# with open(json_path, "r", encoding="utf-8") as f:
+#     data = json.load(f)
+
+# # カードの情報
+# base_card = data["base_card"] 
+# result_card = data["result_card"]
 
 st.write("次のカードは大きい？ 小さい？")
 st.write("**High** か **Low** を選んでね!!")
@@ -30,13 +38,6 @@ st.header(
 
 
 
-from models.highlow import draw_cards
-
-if "base_card" not in st.session_state:
-    st.session_state.base_card, st.session_state.result_card = draw_cards()
-
-base_card = st.session_state.base_card
-result_card = st.session_state.result_card
 
 
 
@@ -78,7 +79,6 @@ else:
             st.info("引き分け！ Draw!")
     elif result == "win":
         st.success("正解！ You Win!")
-
     elif result == "lose":
         st.error("残念！ You Lose!")
 
