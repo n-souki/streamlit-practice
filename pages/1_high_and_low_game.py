@@ -29,8 +29,6 @@ st.header(
 
 
 
-st.button("**High**")
-st.button("**Low**")
 
 from models.highlow import draw_cards
 
