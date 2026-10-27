@@ -74,14 +74,15 @@ else:
     )
 
     # 判定結果を表示
-    if result == "win":
+    if result == "draw":
+            st.info("引き分け！ Draw!")
+    elif result == "win":
         st.success("正解！ You Win!")
 
     elif result == "lose":
         st.error("残念！ You Lose!")
 
-    elif result == "draw":
-        st.info("引き分け！ Draw!")
+   
 
     # リセット
     if st.button("もう一度"):
