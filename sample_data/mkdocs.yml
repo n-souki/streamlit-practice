@@ -1,0 +1,7 @@
+site_name:Card Game App
+site_url:https://n-souki.github.io/streamlit-practice/
+theme:
+  name: mkdocs
+nav:
+    - Home:index.md
+repo_url: https://github.com/souki/streamlit-practice
