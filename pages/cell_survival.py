@@ -10,7 +10,7 @@ if str(PROJECT_ROOT) not in sys.path:
 from games.survival import render
 from ui.nexus import apply_theme, header
 
-st.set_page_config(page_title="CELL SURVIVAL", page_icon="🔬")
+st.set_page_config(page_title="細胞サバイバル", page_icon="🔬")
 apply_theme()
-header("BIOCHEMISTRY / CELL SURVIVAL")
+header("生化学 / 細胞サバイバル")
 render()

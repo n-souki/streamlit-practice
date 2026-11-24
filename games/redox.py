@@ -65,11 +65,11 @@ def _show_resources(resources: Resources) -> None:
 def _finish(resources: Resources, turns: int) -> None:
     rank = _rank(resources, turns)
     if resources.atp >= STAGE_GOAL:
-        st.success(f"STAGE 1クリア！ ランク: **{rank}**")
+        st.success(f"ステージ1クリア！ ランク: **{rank}**")
     else:
-        st.error(f"STAGE 1失敗。ランク: **{rank}**")
+        st.error(f"ステージ1失敗。ランク: **{rank}**")
     st.write(f"最終ATP: **{resources.atp}** / 目標 {STAGE_GOAL}")
-    if st.button("STAGE 1をもう一度遊ぶ", key="redox_restart"):
+    if st.button("ステージ1をもう一度遊ぶ", key="redox_restart"):
         _start()
         st.rerun()
 
@@ -79,12 +79,12 @@ def render() -> None:
     if "redox_resources" not in st.session_state:
         _start()
 
-    st.header("REDOX MASTER：細胞の酸化還元戦略")
+    st.header("酸化還元マスター：細胞の酸化還元戦略")
     st.caption("教育用の簡略モデルです。実際の細胞内代謝を定量的に再現するものではありません。")
     resources = st.session_state.redox_resources
     turn = st.session_state.redox_turn
     _show_resources(resources)
-    st.info("STAGE 1：エネルギー不足 — 解糖系と電子伝達系でATPを15以上にする")
+    st.info("ステージ1：エネルギー不足 — 解糖系と電子伝達系でATPを15以上にする")
     st.progress(min(turn / STAGE_TURNS, 1.0))
     st.write(f"ターン: **{turn} / {STAGE_TURNS}**　目標ATP: **{STAGE_GOAL}以上**")
 

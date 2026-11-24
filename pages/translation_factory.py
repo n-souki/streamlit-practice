@@ -66,7 +66,7 @@ def show_finished_game() -> None:
 
 st.set_page_config(page_title=TITLE, page_icon="🧬", layout="centered")
 apply_theme()
-header("BIOCHEMISTRY / TRANSLATION FACTORY")
+header("生化学 / 翻訳工場")
 st.title(TITLE)
 st.caption("mRNAのコドンを読み取り、対応するtRNAのアンチコドンを選びましょう。")
 

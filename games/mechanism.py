@@ -10,10 +10,10 @@ from games.mechanism_data import (
 )
 
 MODES = (
-    "MODE 1：反応経路構築",
-    "MODE 2：電子移動チャレンジ",
-    "MODE 3：中間体鑑定",
-    "MODE 4：研究者チャレンジ",
+    "モード1：反応経路構築",
+    "モード2：電子移動チャレンジ",
+    "モード3：中間体鑑定",
+    "モード4：研究者チャレンジ",
 )
 
 
@@ -279,7 +279,7 @@ def render() -> None:
     st.session_state.setdefault("mechanism_streak", 0)
     st.session_state.setdefault("mechanism_best_streak", 0)
 
-    st.header("ENZYME LAB：反応機構研究所")
+    st.header("酵素ラボ：反応機構研究所")
     st.caption("題材：ピルビン酸デヒドロゲナーゼ複合体（PDH）｜反応中心と電子移動を模式的に解析")
 
     accuracy = _accuracy()
@@ -344,7 +344,7 @@ def render() -> None:
             use_container_width=True,
         )
 
-    if st.button("ENZYME LABをリセット", key="mechanism_reset"):
+    if st.button("酵素ラボをリセット", key="mechanism_reset"):
         _reset()
         st.session_state.mechanism_electron_index = 0
         st.session_state.mechanism_intermediate_index = 0

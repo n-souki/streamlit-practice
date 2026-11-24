@@ -68,7 +68,7 @@ def render() -> None:
     turn = st.session_state.survival_turn
     status, pressures = health(resources)
 
-    st.header("CELL SURVIVAL：細胞代謝シミュレーション")
+    st.header("細胞サバイバル：細胞代謝シミュレーション")
     st.caption("教育用の抽象モデルです。細胞質とミトコンドリアの区画を簡略化して表現します。")
     st.write(f"ターン: **{turn} / {MAX_TURNS}**　細胞状態: **{status}**")
     if pressures:

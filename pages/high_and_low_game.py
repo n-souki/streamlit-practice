@@ -11,6 +11,11 @@ from models.highlow import calculate_payout, draw_cards, judge, win_probability
 from ui.nexus import apply_theme, header
 
 MODES = ("CLASSIC", "SURVIVAL", "CHALLENGE")
+MODE_LABELS = {
+    "CLASSIC": "クラシック",
+    "SURVIVAL": "サバイバル",
+    "CHALLENGE": "チャレンジ",
+}
 MISSIONS = (
     "10ターン以内に5連勝する",
     "1000ポイントを獲得する",
@@ -71,10 +76,15 @@ def _mission_complete() -> bool:
 
 
 def _show_settings() -> None:
-    mode = st.selectbox("ゲームモード", MODES, key="highlow_mode_selector")
+    mode = st.selectbox(
+        "ゲームモード",
+        MODES,
+        format_func=lambda value: MODE_LABELS[value],
+        key="highlow_mode_selector",
+    )
     if mode == "SURVIVAL":
         st.number_input(
-            "SURVIVAL初期ポイント",
+            "サバイバル初期ポイント",
             min_value=100,
             max_value=10000,
             value=1000,
@@ -129,10 +139,10 @@ def render() -> None:
     """Render the High & Low game with modes, abilities, and achievements."""
     apply_theme()
     _ensure_state()
-    header("HIGH & LOW", st.session_state.highlow_points)
-    st.title("_High & Low Game_")
-    st.write("**High & Low** ゲームへようこそ！")
-    st.caption(f"MODE: **{st.session_state.highlow_mode}**")
+    header("ハイ＆ロー", st.session_state.highlow_points)
+    st.title("ハイ＆ローゲーム")
+    st.write("**ハイ＆ロー**ゲームへようこそ！")
+    st.caption(f"モード: **{MODE_LABELS[st.session_state.highlow_mode]}**")
 
     with st.expander("ゲームモードを変更する"):
         _show_settings()
@@ -150,7 +160,7 @@ def render() -> None:
     points_col, bet_col, probability_col = st.columns(3)
     points_col.metric("ポイント", st.session_state.highlow_points)
     bet = bet_col.number_input(
-        "BET",
+        "賭けポイント",
         min_value=1,
         max_value=max(1, st.session_state.highlow_points),
         value=min(100, max(1, st.session_state.highlow_points)),
@@ -161,7 +171,7 @@ def render() -> None:
     base_card = st.session_state.base_card
     choice_for_probability = "High" if base_card["rank"] < 7 else "Low"
     probability_col.metric(
-        f"{choice_for_probability}勝率",
+        f"{'ハイ' if choice_for_probability == 'High' else 'ロー'}勝率",
         f"{win_probability(base_card['rank'], choice_for_probability):.0%}",
     )
 
@@ -194,15 +204,15 @@ def render() -> None:
             st.session_state.highlow_insurance = True
             st.rerun()
         if st.session_state.highlow_insurance:
-            st.caption("保険が有効です。次に負けてもBETは減りません。")
+            st.caption("保険が有効です。次に負けても賭けポイントは減りません。")
 
         high_col, low_col = st.columns(2)
-        if high_col.button("High", use_container_width=True, key="highlow_high"):
+        if high_col.button("ハイ", use_container_width=True, key="highlow_high"):
             st.session_state.choice = "High"
             st.session_state.highlow_high_choices += 1
             _resolve_round(int(bet))
             st.rerun()
-        if low_col.button("Low", use_container_width=True, key="highlow_low"):
+        if low_col.button("ロー", use_container_width=True, key="highlow_low"):
             st.session_state.choice = "Low"
             _resolve_round(int(bet))
             st.rerun()
@@ -231,7 +241,7 @@ def render() -> None:
             st.session_state.highlow_mode == "SURVIVAL"
             and result == "lose"
         ):
-            st.warning("不正解のためSURVIVAL挑戦終了です。")
+            st.warning("不正解のためサバイバル挑戦終了です。")
         _new_round()
         st.rerun()
 

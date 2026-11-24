@@ -1,4 +1,4 @@
-"""Shared visual system for NEXUS LAB."""
+"""共有ビジュアルシステム。"""
 
 import streamlit as st
 
@@ -118,26 +118,26 @@ div[data-baseweb="select"] > div, div[data-baseweb="input"] > div {
 
 
 def apply_theme() -> None:
-    """Apply the shared NEXUS LAB color palette and component styles."""
+    """共通の配色とコンポーネントスタイルを適用する。"""
     st.markdown(CSS, unsafe_allow_html=True)
-    st.sidebar.markdown("## NEXUS LAB")
-    st.sidebar.caption("PLAY. THINK. DISCOVER.")
+    st.sidebar.markdown("## ネクサスラボ")
+    st.sidebar.caption("遊ぶ。考える。発見する。")
     st.sidebar.markdown("---")
-    st.sidebar.page_link("app.py", label="HOME", icon="🏠")
-    st.sidebar.page_link("pages/high_and_low_game.py", label="HIGH & LOW", icon="🃏")
-    st.sidebar.page_link("pages/biochemistry.py", label="BIOCHEMISTRY", icon="🧬")
-    st.sidebar.page_link("pages/achievements.py", label="ACHIEVEMENTS", icon="🏆")
-    st.sidebar.page_link("pages/research_log.py", label="RESEARCH LOG", icon="🧪")
+    st.sidebar.page_link("app.py", label="ホーム", icon="🏠")
+    st.sidebar.page_link("pages/high_and_low_game.py", label="ハイ＆ロー", icon="🃏")
+    st.sidebar.page_link("pages/biochemistry.py", label="生化学", icon="🧬")
+    st.sidebar.page_link("pages/achievements.py", label="実績", icon="🏆")
+    st.sidebar.page_link("pages/research_log.py", label="研究記録", icon="🧪")
 
 
 def header(page_name: str, points: int | None = None) -> None:
-    """Render a consistent brand header."""
-    points_text = f"<span>POINTS {points}</span>" if points is not None else ""
+    """共通のブランドヘッダーを表示する。"""
+    points_text = f"<span>ポイント {points}</span>" if points is not None else ""
     st.markdown(
         f"""
         <div class="nexus-header">
-          <div class="nexus-brand">NEXUS LAB</div>
-          <div class="nexus-subtitle">PLAY. THINK. DISCOVER.</div>
+          <div class="nexus-brand">ネクサスラボ</div>
+          <div class="nexus-subtitle">遊ぶ。考える。発見する。</div>
           <div class="nexus-page">{page_name} {points_text}</div>
         </div>
         """,

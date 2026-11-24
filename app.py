@@ -2,11 +2,11 @@ import streamlit as st
 
 from ui.nexus import apply_theme, card, header
 
-st.set_page_config(page_title="NEXUS LAB", page_icon="🧪", layout="wide")
+st.set_page_config(page_title="ネクサスラボ", page_icon="🧪", layout="wide")
 apply_theme()
-header("HOME")
+header("ホーム")
 
-st.title("NEXUS LAB")
+st.title("ネクサスラボ")
 st.write("科学研究施設とゲームセンターが交差する、学習ゲームの実験場です。")
 
 points = st.session_state.get("highlow_points", 0)
@@ -20,18 +20,18 @@ achievement_count = sum(
     )
 )
 metric_cols = st.columns(3)
-metric_cols[0].metric("POINTS", points)
-metric_cols[1].metric("BEST STREAK", best_streak)
-metric_cols[2].metric("ACHIEVEMENTS", f"{achievement_count} / 4")
+metric_cols[0].metric("ポイント", points)
+metric_cols[1].metric("最長連続正解", best_streak)
+metric_cols[2].metric("実績", f"{achievement_count} / 4")
 
-st.subheader("SELECT YOUR LAB")
+st.subheader("研究室を選択")
 left, right = st.columns(2)
 with left:
-    card("HIGH & LOW", "トランプの確率と判断力を試すカードラボ。", "♠")
-    st.page_link("pages/high_and_low_game.py", label="HIGH & LOWを開く", icon="🃏")
+    card("ハイ＆ロー", "トランプの確率と判断力を試すカードラボ。", "♠")
+    st.page_link("pages/high_and_low_game.py", label="ハイ＆ローを開く", icon="🃏")
 with right:
-    card("BIOCHEMISTRY", "DNA、ATP、NADH、酵素をテーマにした研究ゲーム群。", "🧬")
-    st.page_link("pages/biochemistry.py", label="BIOCHEMISTRYを開く", icon="🧬")
+    card("生化学", "DNA、ATP、NADH、酵素をテーマにした研究ゲーム群。", "🧬")
+    st.page_link("pages/biochemistry.py", label="生化学を開く", icon="🧬")
 
-st.subheader("DAILY MISSION")
-st.info("今日のミッション：Highを3回選択して、判断データを記録する")
+st.subheader("今日のミッション")
+st.info("今日のミッション：ハイを3回選択して、判断データを記録する")

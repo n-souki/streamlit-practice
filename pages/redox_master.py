@@ -10,7 +10,7 @@ if str(PROJECT_ROOT) not in sys.path:
 from games.redox import render
 from ui.nexus import apply_theme, header
 
-st.set_page_config(page_title="REDOX MASTER", page_icon="⚡")
+st.set_page_config(page_title="酸化還元マスター", page_icon="⚡")
 apply_theme()
-header("BIOCHEMISTRY / REDOX MASTER")
+header("生化学 / 酸化還元マスター")
 render()
