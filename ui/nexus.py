@@ -11,14 +11,56 @@ CSS = """
   --nexus-blue: #65BDE8;
   --nexus-gold: #F5BD69;
   --nexus-text: #F1F5F9;
-  --nexus-muted: #A8B8C9;
+  --nexus-muted: #D8E3EC;
   --nexus-border: #34475B;
 }
 .stApp { background: var(--nexus-bg); color: var(--nexus-text); }
+.stApp p,
+.stApp li,
+.stApp label,
+.stApp caption,
+.stApp small,
+.stApp [data-testid="stMarkdownContainer"],
+.stApp [data-testid="stCaptionContainer"],
+.stApp [data-testid="stWidgetLabel"],
+.stApp [data-testid="stAlertContent"] {
+  color: var(--nexus-text) !important;
+}
+[data-testid="stMetricLabel"],
+[data-testid="stMetricValue"],
+[data-testid="stMetricDelta"] {
+  color: var(--nexus-text) !important;
+}
+div[data-baseweb="select"] *,
+div[data-baseweb="input"] *,
+[data-testid="stRadio"] *,
+[data-testid="stCheckbox"] *,
+[data-testid="stMultiSelect"] * {
+  color: var(--nexus-text) !important;
+}
+[data-testid="stDataFrame"] *,
+[data-testid="stTable"] * {
+  color: var(--nexus-text) !important;
+  border-color: var(--nexus-border) !important;
+}
+.stAlert,
+.stAlert p,
+.stAlert strong {
+  color: var(--nexus-text) !important;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: var(--nexus-text) !important;
+  letter-spacing: .02em;
+}
 [data-testid="stSidebar"] { background: #0c1726; border-right: 1px solid var(--nexus-border); }
-[data-testid="stSidebar"] a { color: var(--nexus-muted) !important; }
-[data-testid="stSidebar"] a:hover { color: var(--nexus-mint) !important; }
-h1, h2, h3 { color: var(--nexus-text); letter-spacing: .02em; }
+[data-testid="stSidebar"],
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] small {
+  color: var(--nexus-gold) !important;
+}
+[data-testid="stSidebar"] a { color: var(--nexus-gold) !important; }
+[data-testid="stSidebar"] a:hover { color: #ffd18a !important; }
 .nexus-header {
   padding: 1.1rem 1.3rem; margin-bottom: 1.2rem;
   border: 1px solid var(--nexus-border); border-radius: 18px;
@@ -38,7 +80,7 @@ h1, h2, h3 { color: var(--nexus-text); letter-spacing: .02em; }
   background: var(--nexus-panel); color: var(--nexus-text);
   transition: background .18s ease, border-color .18s ease, transform .18s ease;
 }
-.stButton > button:hover { background: #394861; border-color: var(--nexus-mint); transform: translateY(-1px); }
+.stButton > button:hover { background: #294861; border-color: var(--nexus-mint); transform: translateY(-1px); }
 [data-testid="stMetric"] {
   background: var(--nexus-panel); border: 1px solid var(--nexus-border);
   border-radius: 14px; padding: .8rem;
