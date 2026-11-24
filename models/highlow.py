@@ -10,6 +10,24 @@ def draw_cards():
     ]
     return random.sample(deck, 2)
 
+
+def win_probability(base_rank, choice):
+    """Return the probability of winning against a fresh card."""
+    winning_cards = (
+        13 - base_rank if choice == "High" else base_rank - 1
+    )
+    return winning_cards / 13
+
+
+def calculate_payout(points, bet, result):
+    """Return the point change for a round."""
+    if result == "win":
+        return bet
+    if result == "lose":
+        return -bet
+    return 0
+
+
 def judge(base_rank, result_rank, choice):
     # 同じ数字なら引き分け
     if base_rank == result_rank:
