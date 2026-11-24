@@ -32,7 +32,13 @@ def show_result(codon: str, selected: str) -> None:
     amino_acid = CODON_TABLE[codon]
 
     if selected == correct_anticodon:
-        st.success(f"正解！ {codon} は {amino_acid} を指定します。")
+        st.markdown(
+            f"<div style='background:#edf8ef; border:1px solid #8fd19a; "
+            f"border-radius:10px; padding:.75rem 1rem; color:#17212b;'>"
+            f"<strong style='color:#17212b;'>正解！ {codon} は {amino_acid} を指定します。</strong>"
+            f"</div>",
+            unsafe_allow_html=True,
+        )
     else:
         st.error("不正解です。")
         st.info(
@@ -87,7 +93,9 @@ codon = st.session_state.codons[question_index]
 st.subheader("このコドンに対応するアンチコドンは？")
 st.markdown(
     f"<div style='text-align:center; font-size:2.8rem; font-weight:700; "
-    f"letter-spacing:.18em; margin:1rem 0'>5'-{codon}-3'</div>",
+    f"letter-spacing:.18em; margin:1rem 0; color:#17212b; "
+    f"background:#eef3f7; border-radius:10px; padding:.5rem'>"
+    f"5'-{codon}-3'</div>",
     unsafe_allow_html=True,
 )
 st.caption("アンチコドンは 3' → 5' の向きで表示されます。")

@@ -33,20 +33,40 @@ CSS = """
 }
 div[data-baseweb="select"] *,
 div[data-baseweb="input"] *,
-[data-testid="stRadio"] *,
 [data-testid="stCheckbox"] *,
 [data-testid="stMultiSelect"] * {
   color: var(--nexus-text) !important;
 }
+[data-testid="stRadio"] {
+  background: #eef3f7;
+  border: 1px solid #cbd6df;
+  border-radius: 10px;
+  padding: .55rem .75rem;
+}
+[data-testid="stRadio"] *,
+[data-testid="stRadio"] label,
+[data-testid="stRadio"] p,
+[data-testid="stRadio"] span,
+[data-testid="stRadio"] div {
+  color: #17212b !important;
+}
 [data-testid="stDataFrame"] *,
 [data-testid="stTable"] * {
-  color: var(--nexus-text) !important;
+  color: #17212b !important;
   border-color: var(--nexus-border) !important;
+}
+[data-baseweb="popover"] *,
+[data-baseweb="menu"] *,
+[role="listbox"] *,
+[role="option"] * {
+  color: #17212b !important;
 }
 .stAlert,
 .stAlert p,
-.stAlert strong {
-  color: var(--nexus-text) !important;
+.stAlert strong,
+.stAlert span,
+.stAlert div {
+  color: #17212b !important;
 }
 h1, h2, h3, h4, h5, h6 {
   color: var(--nexus-text) !important;
